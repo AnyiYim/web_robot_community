@@ -46,6 +46,20 @@ class UserServer(BaseServer):
             return m.robot_id
         return r
 
+    def get_robot_msg(self, uid):
+        r = self.session.query(RobotMsg)\
+            .filter(RobotMsg.user_id == uid, RobotMsg.status == 1)\
+            .first()
+        return r
+
+    def done_robot_msg(self, uid):
+        r = self.get_robot_msg(uid)
+        r.status = 0
+        self.session.query(Robot)\
+            .filter(Robot.id == r.robot_id)\
+            .update({Robot.status: 0})
+        # return rid
+
     def get_resident(self, building=''):
         return self.session.query(Resident).filter(Resident.building.like(f'%{building}%')).all()
 
@@ -72,3 +86,16 @@ class UserServer(BaseServer):
         l = d.role.split(';')
         l.remove(id)
         d.role = ';'.join(l)
+
+    def add_role(self, day, id):
+        d = self.session.query(Role).get(day)
+        l = d.role and d.role.split(';') or []
+        if id in l:
+            return
+        if d.role:
+            d.role = (d.role + ';' + str(id)).strip(';')
+        else:
+            d.role = str(id)
+
+    def get_text_user(self, text):
+        return self.session.query(User).filter(User.role == 'ROLE', User.user_name.like(f'%{text}%')).all()

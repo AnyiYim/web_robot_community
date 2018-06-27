@@ -15,7 +15,16 @@ class SignInForm(Base):
     role = StringField()
 
 
-
 class BindUserForm(Base):
     id = IntegerField(validators=[DataRequired()])
     uid = IntegerField(validators=[DataRequired()])
+
+
+class RoleForm(Base):
+    id = IntegerField(validators=[DataRequired()])
+    day = IntegerField(validators=[DataRequired()])
+
+
+class CallBackForm(Base):
+    id = IntegerField(validators=[DataRequired()])
+    call = StringField(validators=[DataRequired()])

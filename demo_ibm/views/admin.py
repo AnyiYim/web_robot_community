@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 
+from server.MsgServ import MsgServer
 from server.UserServ import UserServer
-from views.form.user_form import LoginForm, SignInForm, BindUserForm
+from views.form.user_form import LoginForm, SignInForm, BindUserForm, RoleForm, CallBackForm
 
 bp = Blueprint('admin', __name__)
 
@@ -45,8 +46,6 @@ def sub_robot():
     with UserServer() as s:
         s.kill_robot()
     return jsonify(code=0)
-
-
 
 
 @bp.route('all_robot')
@@ -116,4 +115,45 @@ def del_role():
     with UserServer() as s:
         s.del_role(**request.args.to_dict())
     return jsonify(code=0)
+
+
+@bp.route('add_role', methods=['POST'])
+def add_role():
+    form = RoleForm()
+    data = form.data_with_csrf()
+    with UserServer() as s:
+        s.add_role(**data)
+    return jsonify(code=0)
+
+
+@bp.route('get_tt_user')
+def get_u_user():
+    tt = request.args['text']
+    with UserServer() as s:
+        u = s.get_text_user(tt)
+        return jsonify(code=0, data=u and [dict(id=x.id, name=x.user_name) for x in u] or [])
+
+
+@bp.route('get_msg')
+def get_msg():
+    with MsgServer() as s:
+        u = s.get_msg()
+        with UserServer() as a:
+            return jsonify(code=0,
+                           data=u and [dict(id=x.id,
+                                            msg=x.message,
+                                            user_name=a.get_name(x.user_id),
+                                            time=x.createtime.strftime('%y-%m-%d'))
+                                       for x in u] or []
+                           )
+
+
+@bp.route('call_back', methods=['POST'])
+def call_back():
+    form = CallBackForm()
+    data = form.data_with_csrf()
+    with MsgServer() as s:
+        s.call_msg(**data)
+    return jsonify(code=0)
+
 
