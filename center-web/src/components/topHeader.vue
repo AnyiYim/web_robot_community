@@ -25,10 +25,8 @@ export default {
     ddClick(name) {
       switch (name) {
         case 'logout':
-          this.ajax.post('login/logout').then(rsp => {
-            this.$store.commit('setUser', null)
-            this.$router.push('/login')
-          })
+          this.$store.commit('setUser', null);
+          this.$router.push('/');
           break;
         default:
 

@@ -77,6 +77,12 @@ export const pages = [
     menu: ['居民反馈'],
   },
   {
+    path: '/chat',
+    name: 'chat',
+    component: () => import('@/user/chat'),
+    menu: ['问题反馈'],
+  },
+  {
     path: '/vehicle',
     name: 'VehicleList',
     component: () => import('@/pages/vehicle/vehicle-list'),

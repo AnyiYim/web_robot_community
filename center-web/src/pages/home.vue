@@ -22,10 +22,21 @@
       </div>
 
       <div v-else>
-        <div>
-          <Button v-if="!flag" type="primary" @click="use_robot" style="width:30%; height:300px; font-size: 36px; margin-left: 13px; margin-top: 1px">{{'委托帮助'}}</Button>
-          <Button v-else type="primary" style="width:30%; height:300px; font-size: 36px; margin-left: 13px; margin-top: 1px">{{rid + '号机器人还有' + rtime + '秒到达'}}</Button>
-          <Button type="error" style="width:30%; height:300px; font-size: 36px; margin-left: 13px; margin-top: 1px">报警</Button>
+
+        <div class="flex">
+          <Button v-if="!has && !flag" type="primary" :loading="uu" @click="use_robot" style="width:400px; height:300px; font-size: 36px; margin-left: 13px; margin-top: 1px">{{'委托帮助'}}</Button>
+          <Button v-else-if="!has && flag" type="primary" :loading="loading" style="width:400px; height:300px; font-size: 36px; margin-left: 13px; margin-top: 1px">
+            {{rid + '号机器人'}}<br>{{'还有' + rtime + '秒到达'}}
+          </Button>
+
+          <div v-else class="robot">
+          <Button @click="done_robot" type="primary" style="width:400px; height:300px; font-size: 36px; margin-left: 13px; margin-top: 1px">
+            <span class="robot-sub1">{{rid + '号机器人'}}<br>{{'正在为您服务'}}</span>
+            <span class="robot-sub2">点击完成服务</span>
+          </Button>
+          </div>
+
+          <Button type="error" @click="$Message.success('成功报警')" style="width:400px; height:300px; font-size: 36px; margin-left: 53px; margin-top: 1px">报警</Button>
 
         </div>
 
@@ -40,20 +51,29 @@ export default {
     return {
       role: '',
       robot: [],
-      rtime: 270,
+      rtime: 20,
       flag: false,
+      loading: false,
+      has: false,
+      rid: null,
+      uu: false,
 
     }
   },
   created: function () {
+    this.flag = false;
+    this.has = false;
     if (this.$store.state.user.role === 'ADMIN') {
       this.get_robot();
+    }
+    else {
+      this.get_robot_user();
     }
   },
   methods: {
     get_robot() {
       this.ajax.get('/admin/all_robot').then(rsp => {
-        if (rsp.data.code === 0){
+        if (rsp.data.code === 0) {
           this.robot = rsp.data.data.robol;
         }
       }, err => {
@@ -61,7 +81,7 @@ export default {
     },
     robot_add() {
       this.ajax.get('/admin/add_robot').then(rsp => {
-        if (rsp.data.code === 0){
+        if (rsp.data.code === 0) {
           this.get_robot();
         }
       }, err => {
@@ -69,35 +89,62 @@ export default {
     },
     robot_sub() {
       this.ajax.get('/admin/sub_robot').then(rsp => {
-        if (rsp.data.code === 0){
+        if (rsp.data.code === 0) {
           this.get_robot();
         }
       }, err => {
       });
     },
-
-    use_robot() {
-      console.log(this.$store.state.user.id);
-      this.ajax.get('/admin/use_robot?uid=' + this.$store.state.user.id).then(rsp => {
-        if (rsp.data.code === 0){
+    get_robot_user() {
+      this.ajax.get('/user/get_robot_user?uid=' + this.$store.state.user.id).then(rsp => {
+        if (rsp.data.code === 0 && rsp.data.data) {
+          this.has = true;
           this.rid = rsp.data.data;
           this.flag = true;
-          let that = this;
-          let rtime = that.rtime;
-          let interval = window.setInterval(() => {
-            if (--that.rtime <= 0) {
-              that.rtime = rtime;
-              window.clearInterval(interval);
-            }
-          }, 1000)
-
         }
       }, err => {
       });
+    },
+    done_robot() {
+      this.ajax.get('/user/done_robot?uid=' + this.$store.state.user.id).then(rsp => {
+        if (rsp.data.code === 0) {
+          this.has = false;
+          this.rid = null;
+          this.flag = false;
+          this.$Message.success('服务已完成')
+        }
+      }, err => {
+      });
+    },
+    use_robot() {
+      this.uu = true
+      // console.log(this.$store.state.user.id);
+      this.ajax.get('/admin/use_robot?uid=' + this.$store.state.user.id).then(
+        rsp => {
+          if (rsp.data.code === 0) {
+            this.$Message.success('机器人成功派遣');
+            this.uu = false;
+            this.rid = rsp.data.data;
+            this.flag = true;
+            let that = this;
+            let rtime = that.rtime;
+            this.loading = true
+            let interval = window.setInterval(() => {
+              if (--that.rtime <= 0) {
+                that.rtime = rtime;
+                window.clearInterval(interval);
+              }
+              else {
+                this.loading = false;
+                this.has = true;
+              }
+            }, 1000)
+
+          }
+        });
     }
+  },
 
-
-  }
 }
 </script>
 <style lang="less" scoped>
