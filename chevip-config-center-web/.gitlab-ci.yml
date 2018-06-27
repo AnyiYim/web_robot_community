@@ -1,0 +1,50 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  only:
+    - develop
+    - master
+    - test
+  script:
+    - npm install --progress=false
+    - npm run build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+
+# 部署测试服务器
+deploy_dev:
+  stage: deploy
+  only:
+    - develop
+  script:
+    - mkdir -p /var/www/ccc-web
+    - rm -rf /var/www/ccc-web/*
+    - cp -r ./dist/* /var/www/ccc-web/
+
+
+deploy_test:
+ stage: deploy
+ only:
+   - develop
+ script:
+   - cd dist
+   - echo "packing"
+   - tar -czf - * |openssl des3 -salt -k OddIgCSmCWjJo7VjHMf0TSR4NPOtLd4E | dd of=/tmp/ccc-web.tar.gz.des3
+   - echo "upload"
+   - curl -u chevip:FHpmwc9J --form "file=@/tmp/ccc-web.tar.gz.des3" http://deploy.test-serv:8080/deploy/ccc-web
+
+deploy_prod:
+  stage: deploy
+  only:
+    - master
+  script:
+    - cd dist
+    - echo "packing"
+    - tar -czf - * |openssl des3 -salt -k OddIgCSmCWjJo7VjHMf0TSR4NPOtLd4E | dd of=/tmp/ccc-web-prod.tar.gz.des3
+    - echo "upload"
+    - curl -k --cert ~/cert/innlym.crt --key ~/cert/innlym.key --form "file=@/tmp/ccc-web-prod.tar.gz.des3" https://pgs.chevip.com:9000/deploy/ccc-web
