@@ -61,6 +61,7 @@ export default {
     }
   },
   created: function () {
+    console.log(process.env.API + 'pic/vehicle_pic/upload')
     this.flag = false;
     this.has = false;
     if (this.$store.state.user.role === 'ADMIN') {

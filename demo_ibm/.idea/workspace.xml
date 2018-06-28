@@ -52,13 +52,13 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.16236162">
+    <splitter split-orientation="horizontal" split-proportion="0.6125934">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/views/admin.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="280">
+                <state relative-caret-position="868">
                   <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
@@ -83,7 +83,7 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="UserServ.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="UserServ.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server/UserServ.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="178">
@@ -91,24 +91,6 @@
                   <folding>
                     <element signature="e#0#34#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="robot" pinned="false" current-in-tab="true">
-            <entry file="das://c8767904-fa51-4734-9141-1f872607ebb5/schema/anyi/table/robot">
-              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-                <state>
-                  <filtering enabled="true" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="robot_message" pinned="false" current-in-tab="false">
-            <entry file="das://c8767904-fa51-4734-9141-1f872607ebb5/schema/anyi/table/robot_message">
-              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-                <state>
-                  <filtering enabled="true" />
                 </state>
               </provider>
             </entry>
@@ -125,22 +107,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="msg.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/core/msg.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="420">
-                  <caret line="15" selection-start-line="15" selection-end-line="15" />
-                  <folding>
-                    <element signature="e#0#15#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="robot.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/core/robot.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="479">
+                <state relative-caret-position="364">
                   <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
@@ -161,7 +131,7 @@
           <file leaf-file-name="user.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/user.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="731">
+                <state relative-caret-position="756">
                   <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
@@ -218,7 +188,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="817" />
     <option name="y" value="110" />
     <option name="width" value="972" />
@@ -229,7 +199,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -266,6 +235,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -374,48 +344,48 @@
       <window_info anchor="bottom" id="TODO" order="5" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="right" x="45" y="99" width="1830" height="895" id="Run" order="5" type="WINDOWED" weight="0.32817504" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.59790576" />
-      <window_info anchor="right" x="45" y="99" width="1830" height="895" id="Run" order="5" type="WINDOWED" weight="0.32817504" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32879582" />
-      <window_info anchor="bottom" id="Database Console" order="11" weight="0.3287234" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.11099253" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11099253" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.17182498" />
+      <window_info anchor="right" id="Database" order="3" weight="0.17182498" />
       <window_info anchor="right" id="SciView" order="4" weight="0.32977587" />
-      <window_info active="true" id="Structure" order="1" side_tool="true" visible="true" weight="0.12219851" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.12326574" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Database Console" order="11" weight="0.3287234" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17395945" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="5" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="right" x="52" y="80" width="1816" height="910" id="Run" order="5" type="FLOATING" weight="0.32817504" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Python Console" order="9" weight="0.32978722" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
       <window_info anchor="right" id="Database" order="3" weight="0.32977587" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="SciView" order="4" weight="0.32977587" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.32978722" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -729,9 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -744,7 +711,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/robot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
+        <state relative-caret-position="364">
           <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -754,7 +721,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/msg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="308">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -764,7 +731,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
+        <state relative-caret-position="868">
           <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
@@ -774,20 +741,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
+        <state relative-caret-position="756">
           <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/UserServ.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -803,6 +760,16 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/UserServ.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

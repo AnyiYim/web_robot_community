@@ -4,10 +4,10 @@
       <Button @click='changePage()' style="border-radius: 4px; font-size:14px; margin-top: 10px; padding: 4px 30px;">
         全部居民
       </Button>
-      <Button @click='changePage(14)' style="margin-left: 700px; border-radius: 4px; font-size:14px; margin-top: 10px; padding: 4px 30px; background-color: #f92f47; color: #fff">
+      <Button @click='changePage(14)' type="primary" style="margin-left: 700px; border-radius: 4px; font-size:14px; margin-top: 10px; padding: 4px 30px; color: #fff">
         14栋
       </Button>
-      <Button @click='changePage(15)' style="border-radius: 4px; font-size:14px; margin-top: 10px; padding: 4px 30px; background-color: #f92f47; color: #fff">
+      <Button @click='changePage(15)' type="primary" style="border-radius: 4px; font-size:14px; margin-top: 10px; padding: 4px 30px;  color: #fff">
         15栋
       </Button>
       <div class="search-row flex">
@@ -44,7 +44,7 @@
               <div style="width: 150px">{{item.telephone}}</div>
             </td>
             <td><div style="width: 120px">
-              <Button @click='role_form.id = item.id; BindModal=true' v-if="!item.user_name" style="border-radius: 4px; font-size:14px; margin-top: 10px; padding: 4px 30px; background-color: #f92f47; color: #fff">
+              <Button type="primary" @click='role_form.id = item.id; BindModal=true' v-if="!item.user_name" style="border-radius: 4px; font-size:14px; margin-top: 10px; padding: 4px 30px; color: #fff">
                 绑定用户
               </Button>
             </div></td>

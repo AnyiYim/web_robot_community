@@ -39,7 +39,7 @@
         </Form>
       </div>
       <div class="flex flex-center" style="padding:0px 0 0px 35px">
-        <div @click="submitCall" style="width: 570px" class="modal-button ">提 交</div>
+        <div @click="submitCall" style="width: 570px; height: 35px;  line-height: 35px; font-size: 16px" class="modal-button ">提 交</div>
       </div>
       <div slot="footer">
       </div>
