@@ -2,17 +2,17 @@
   <div>
     <div class="home-page">
       <!--首页-->
-      <div v-if="$store.state.user.role === 'ADMIN'">
+      <div v-if="$store.state.user.role === 'ADMIN' || $store.state.user.role === 'ROLE'">
         <div v-if="robot.length > 0" style="flex-wrap: wrap;" class="flex flex-pack-spacearound">
           <Card v-for="(item, index) in robot" :key="index" style="width: 280px; height: 300px; margin-left: 20px; margin-bottom: 30px; text-align: center">
             <a href="https://geocam.tv/streamer/2576.mjpg" target="view_window"><img src="../public/img/robot.jpg" alt="" width="100%"></a>
             <span style="font-size: 16px; font-weight: bold;">{{(item.place + '区机器人： ') + (item.status && '工作中' || '巡逻中')}}</span>
           </Card>
-          <Card style="width: 280px; height: 300px; margin-left: 20px; margin-bottom: 30px; text-align: center">
+          <Card v-if="$store.state.user.role === 'ADMIN'" style="width: 280px; height: 300px; margin-left: 20px; margin-bottom: 30px; text-align: center">
             <div @click="robot_add"><a><img src="../public/img/add.jpg" alt="" width="100%"></a>
             <span style="font-size: 16px; font-weight: bold;">添加机器人</span></div>
           </Card>
-          <Card  style="width: 280px; height: 300px; margin-left: 20px; margin-bottom: 30px; text-align: center">
+          <Card v-if="$store.state.user.role === 'ADMIN'" style="width: 280px; height: 300px; margin-left: 20px; margin-bottom: 30px; text-align: center">
             <div @click="robot_sub"><a ><img src="../public/img/sub.jpg" alt="" width="100%"></a>
             <span style="font-size: 16px; font-weight: bold;">删除机器人</span></div>
           </Card>
@@ -24,12 +24,12 @@
       <div v-else>
 
         <div class="flex">
-          <Button v-if="!has && !flag" type="primary" :loading="uu" @click="use_robot" style="width:400px; height:300px; font-size: 36px; margin-left: 13px; margin-top: 1px">{{'委托帮助'}}</Button>
-          <Button v-else-if="!has && flag" type="primary" :loading="loading" style="width:400px; height:300px; font-size: 36px; margin-left: 13px; margin-top: 1px">
+          <Button v-if="flag == 0" type="primary" :loading="uu" @click="use_robot" style="width:400px; height:300px; font-size: 36px; margin-left: 13px; margin-top: 1px">{{'委托帮助'}}</Button>
+          <Button v-else-if="flag == 1" type="primary" :loading="loading" style="width:400px; height:300px; font-size: 36px; margin-left: 13px; margin-top: 1px">
             {{rid + '号机器人'}}<br>{{'还有' + rtime + '秒到达'}}
           </Button>
 
-          <div v-else class="robot">
+          <div v-else-if="flag == 2" class="robot">
           <Button @click="done_robot" type="primary" style="width:400px; height:300px; font-size: 36px; margin-left: 13px; margin-top: 1px">
             <span class="robot-sub1">{{rid + '号机器人'}}<br>{{'正在为您服务'}}</span>
             <span class="robot-sub2">点击完成服务</span>
@@ -52,7 +52,7 @@ export default {
       role: '',
       robot: [],
       rtime: 20,
-      flag: false,
+      flag: 0,
       loading: false,
       has: false,
       rid: null,
@@ -64,7 +64,7 @@ export default {
     console.log(process.env.API + 'pic/vehicle_pic/upload')
     this.flag = false;
     this.has = false;
-    if (this.$store.state.user.role === 'ADMIN') {
+    if (this.$store.state.user.role === 'ADMIN' || this.$store.state.user.role === 'ROLE') {
       this.get_robot();
     }
     else {
@@ -101,7 +101,7 @@ export default {
         if (rsp.data.code === 0 && rsp.data.data) {
           this.has = true;
           this.rid = rsp.data.data;
-          this.flag = true;
+          this.flag = 2;
         }
       }, err => {
       });
@@ -111,7 +111,7 @@ export default {
         if (rsp.data.code === 0) {
           this.has = false;
           this.rid = null;
-          this.flag = false;
+          this.flag = 0;
           this.$Message.success('服务已完成')
         }
       }, err => {
@@ -126,7 +126,7 @@ export default {
             this.$Message.success('机器人成功派遣');
             this.uu = false;
             this.rid = rsp.data.data;
-            this.flag = true;
+            this.flag = 1;
             let that = this;
             let rtime = that.rtime;
             this.loading = true
@@ -137,7 +137,7 @@ export default {
               }
               else {
                 this.loading = false;
-                this.has = true;
+                this.flag = 2
               }
             }, 1000)
 

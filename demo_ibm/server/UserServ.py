@@ -4,10 +4,12 @@ from core.role import Role
 from core.user import User
 from server.BaseServ import BaseServer
 import random
+from config import client
 
 
 class UserServer(BaseServer):
     def create_user(self, name, password, phone, role='USER'):
+        print(role)
         self.session.add(
             User(user_name=name, true_name=name,
                  telephone=phone, password_md=password,
@@ -99,3 +101,5 @@ class UserServer(BaseServer):
 
     def get_text_user(self, text):
         return self.session.query(User).filter(User.role == 'ROLE', User.user_name.like(f'%{text}%')).all()
+
+

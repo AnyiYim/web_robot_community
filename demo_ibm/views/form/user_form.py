@@ -1,4 +1,4 @@
-from wtforms import StringField, IntegerField
+from wtforms import StringField, IntegerField, FileField
 from wtforms.validators import DataRequired
 from views.form import Base
 
@@ -28,3 +28,7 @@ class RoleForm(Base):
 class CallBackForm(Base):
     id = IntegerField(validators=[DataRequired()])
     call = StringField(validators=[DataRequired()])
+
+
+class UploadForm(Base):
+    pic = FileField(validators=[DataRequired()])

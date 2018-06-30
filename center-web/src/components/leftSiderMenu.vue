@@ -37,6 +37,7 @@
 <script>
 import {page} from '@/router'
 import {admin} from '@/router'
+import {kk} from '@/router'
 export default {
   data: () => ({
     menuTree: null,
@@ -51,6 +52,9 @@ export default {
     var roo;
     if (this.$store.state.user.role === 'ADMIN') {
       roo = admin;
+    } else if (this.$store.state.user.role === 'ROLE') {
+      roo = kk;
+      console.log(1111111111)
     } else {
       roo = page;
     }

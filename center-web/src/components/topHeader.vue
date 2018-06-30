@@ -36,7 +36,7 @@ export default {
   filters: {
     duang: function (value) {
       const status_dict = {
-        USER: '用户端', ADMIN: '管理端',
+        USER: 'IBM用户端', ADMIN: 'IBM管理端', ROLE: 'IBM安保端'
       };
       return value && status_dict[value] || null;
     }

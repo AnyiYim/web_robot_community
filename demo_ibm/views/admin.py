@@ -1,12 +1,12 @@
+import datetime
+
 from flask import Blueprint, jsonify, request
 
 from server.MsgServ import MsgServer
 from server.UserServ import UserServer
-from views.form.user_form import LoginForm, SignInForm, BindUserForm, RoleForm, CallBackForm
+from views.form.user_form import LoginForm, SignInForm, BindUserForm, RoleForm, CallBackForm, UploadForm
 
 bp = Blueprint('admin', __name__)
-
-# from . import login
 
 
 @bp.route('sign_in', methods=['POST'])
@@ -155,5 +155,15 @@ def call_back():
     with MsgServer() as s:
         s.call_msg(**data)
     return jsonify(code=0)
+
+
+@bp.route('upload', methods=['POST'])
+def upload_pic():
+    form = UploadForm()
+    data = form.data_with_csrf()
+    pic = data['pic']
+    with MsgServer() as s:
+        kk = s.baidu_pic(pic)
+    return jsonify(code=0, data=dict(license=kk, time=datetime.datetime.now().strftime('%m月%d日 %H:%M:%S')))
 
 
